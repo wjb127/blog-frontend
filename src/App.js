@@ -1,14 +1,27 @@
-import React from 'react';
-import PostList from './components/PostList';  // PostList 컴포넌트 임포트
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import UserList from "./components/UserList";
+import UserForm from "./components/UserForm";
+import Home from "./components/Home";
+import CategoryList from "./components/CategoryList";
+import CategoryForm from "./components/CategoryForm";
 
+// users 및 caterogies를 위한 라우트를 추가합니다.
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Blog Posts</h1>
-      </header>
-      <PostList />  // PostList 컴포넌트 렌더링
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/users" element={<UserList />} />
+        <Route path="/users/new" element={<UserForm />} />
+        <Route path="/users/edit/:id" element={<UserForm />} />
+
+        <Route path="/categories" element={<CategoryList />} />
+        <Route path="/categories/new" element={<CategoryForm />} />
+        <Route path="/categories/edit/:id" element={<CategoryForm />} />
+      </Routes>
+    </Router>
   );
 }
 
