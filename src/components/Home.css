@@ -25,10 +25,11 @@
 }
 
 /* 버튼 컨테이너 스타일 */
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.home-container .button-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 20px !important;
 }
 
 /* 버튼 스타일 */
