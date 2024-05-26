@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import "./PostList.css"; // 추가된 CSS 파일을 가져옵니다.
 
 function PostList() {
   const [posts, setPosts] = useState([]);
-  const [post, setPost] = useState({ title: '', content: '' });
-  const [editing, setEditing] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
 
   useEffect(() => {
     fetchPosts();
@@ -12,70 +13,63 @@ function PostList() {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/posts');
+      const response = await axios.get("http://localhost:3001/posts");
       setPosts(response.data);
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      console.error("Error fetching posts:", error);
     }
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPost(prev => ({ ...prev, [name]: value }));
-  };
+  // const deletePost = async (id) => {
+  //   try {
+  //     await axios.delete(`http://localhost:3001/posts/${id}`);
+  //     fetchPosts();
+  //   } catch (error) {
+  //     console.error("Error deleting post:", error);
+  //   }
+  // };
 
-  const addOrUpdatePost = async () => {
-    if (editing) {
-      await axios.put(`http://localhost:3001/posts/${post._id}`, post);
-    } else {
-      await axios.post('http://localhost:3001/posts', post);
-    }
-    setPost({ title: '', content: '' }); // 폼 초기화
-    setEditing(false);
-    fetchPosts();
-  };
-
-  const editPost = (post) => {
-    setPost(post);
-    setEditing(true);
-  };
-
-  const deletePost = async (id) => {
-    try {
-      await axios.delete(`http://localhost:3001/posts/${id}`);
-      fetchPosts();
-    } catch (error) {
-      console.error('Error deleting post:', error);
-    }
+  const handleTitleClick = (post) => {
+    setSelectedPost(post);
   };
 
   return (
-    <div>
-      <h1>Posts</h1>
-      <input
-        type="text"
-        name="title"
-        value={post.title}
-        onChange={handleInputChange}
-        placeholder="Title"
-      />
-      <textarea
-        name="content"
-        value={post.content}
-        onChange={handleInputChange}
-        placeholder="Content"
-      />
-      <button onClick={addOrUpdatePost}>{editing ? 'Update' : 'Add'}</button>
-      <ul>
-        {posts.map(post => (
+    <div className="container">
+      <div className="button-container">
+        <Link to="/" className="button large-button">
+          홈
+        </Link>
+        <Link to="/posts/new" className="button large-button">
+          글쓰기
+        </Link>
+      </div>
+      <ul className="post-list">
+        {posts.map((post) => (
           <li key={post._id}>
-            <h2 onClick={() => editPost(post)}>{post.title}</h2>
-            <p>{post.content}</p>
-            <button onClick={() => editPost(post)}>Edit</button>
-            <button onClick={() => deletePost(post._id)}>Delete</button>
+            <span className="post-title" onClick={() => handleTitleClick(post)}>
+              {post.title}
+            </span>
+            <div>
+              <Link to={`/posts/edit/${post._id}`} className="button">
+                편집
+              </Link>
+              <Link to={`/posts/delete/${post._id}`} className="button">
+                삭제
+              </Link>
+              {/* <button className="button" onClick={() => deletePost(post._id)}>
+                삭제
+              </button> */}
+            </div>
           </li>
         ))}
       </ul>
+      {selectedPost && (
+        <div className="post-content">
+          <h2>{selectedPost.title}</h2>
+          <p>{selectedPost.content}</p>
+          <p>{selectedPost.author}</p>
+        </div>
+      )}
     </div>
   );
 }

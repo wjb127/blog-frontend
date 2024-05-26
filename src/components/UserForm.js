@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import "./UserForm.css"; // 추가된 CSS 파일을 가져옵니다.
 
 function UserForm() {
-  const [user, setUser] = useState({ username: '', email: '', password: '' });
+  const [user, setUser] = useState({ username: "", email: "", password: "" });
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ function UserForm() {
       const response = await axios.get(`http://localhost:3001/users/${userId}`);
       setUser(response.data);
     } catch (error) {
-      console.error('Error fetching the user:', error);
+      console.error("Error fetching the user:", error);
     }
   };
 
@@ -28,24 +29,24 @@ function UserForm() {
       if (id) {
         await axios.put(`http://localhost:3001/users/${id}`, user);
       } else {
-        await axios.post('http://localhost:3001/users', user);
+        await axios.post("http://localhost:3001/users", user);
       }
-      navigate('/users'); // Redirect to the user list after form submission
+      navigate("/users"); // Redirect to the user list after form submission
     } catch (error) {
-      console.error('Error submitting the user:', error);
+      console.error("Error submitting the user:", error);
     }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setUser(prevState => ({
+    setUser((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
       <label>
         Username:
         <input
@@ -73,7 +74,9 @@ function UserForm() {
           onChange={handleChange}
         />
       </label>
-      <button type="submit">{id ? 'Update' : 'Create'}</button>
+      <div className="button-container">
+        <button type="submit">{id ? "Update" : "Create"}</button>
+      </div>
     </form>
   );
 }

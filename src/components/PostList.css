@@ -1,0 +1,96 @@
+/* 공통 버튼 스타일 */
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #007BFF;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* 큰 버튼 스타일 */
+.large-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px 5px;
+}
+
+/* 컨테이너 스타일 */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px; /* 좌우 여백 추가 */
+}
+
+/* 버튼 컨테이너 스타일 */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* 포스트 목록 스타일 */
+.post-list {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.post-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.post-title {
+  color: #007BFF;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.post-title:hover {
+  text-decoration: underline;
+}
+
+/* 포스트 내용 스타일 */
+.post-content {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  margin-top: 20px; /* 위쪽 여백 추가 */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 박스 그림자 추가 */
+}
+
+.post-content h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.post-content p {
+  color: #555;
+  line-height: 1.6; /* 행간 조절 */
+  margin-bottom: 10px;
+}
+
+.post-content p:last-child {
+  margin-bottom: 0;
+}

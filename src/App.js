@@ -5,6 +5,8 @@ import UserForm from "./components/UserForm";
 import Home from "./components/Home";
 import CategoryList from "./components/CategoryList";
 import CategoryForm from "./components/CategoryForm";
+import PostList from "./components/PostList";
+import PostForm from "./components/PostForm";
 
 // users 및 caterogies를 위한 라우트를 추가합니다.
 function App() {
@@ -20,6 +22,11 @@ function App() {
         <Route path="/categories" element={<CategoryList />} />
         <Route path="/categories/new" element={<CategoryForm />} />
         <Route path="/categories/edit/:id" element={<CategoryForm />} />
+
+        <Route path="/posts" element={<PostList />} />
+        <Route path="/posts/new" element={<PostForm />} />
+        <Route path="/posts/edit/:id" element={<PostForm />} />
+        
       </Routes>
     </Router>
   );

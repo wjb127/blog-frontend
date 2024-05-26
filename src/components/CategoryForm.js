@@ -1,7 +1,9 @@
+// This component is used to create or update a category.
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
+// The CategoryForm component is used to create or update a category.
 function CategoryForm() {
   const [category, setCategory] = useState({ name: '', description: '' });
   const { id } = useParams();

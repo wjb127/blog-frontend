@@ -1,44 +1,29 @@
-// src/components/Home.js
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Home.css"; // 추가된 CSS 파일을 가져옵니다.
 
 function Home() {
-  // users 및 caterogies를 위한 라우트를 추가합니다.
   return (
-    <div>
-      <h1>Welcome to the Blog!</h1>
+    <div className="home-container">
+      <h1>블로그에 오신 것을 환영합니다!</h1>
       <div>
         <p>
-          블로그에 오신 것을 환영합니다! 현재 사용자 및 카테고리를 관리하는
-          기능만 구현되어 있습니다.
+          블로그에 오신 것을 환영합니다! 여기에서 사용자를 관리하고, 카테고리를
+          설정하며, 게시물을 작성할 수 있습니다. 여러분을 위한 다양한 기능을
+          탐험해보세요.
         </p>
-        <p>아래 버튼 클릭해서 사용자 및 카테고리를 관리하세요. </p>
+        <p>아래 버튼을 클릭하여 블로그 콘텐츠 관리를 시작하세요:</p>
 
-        <div style={{ marginTop: "20px" }}>
-          <button
-            style={{
-              marginRight: "10px",
-              padding: "8px 16px",
-              backgroundColor: "lightblue",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              fontWeight: "bold",
-            }}
-          >
-            <a href="/users">Users</a>
-          </button>
-          <button
-            style={{
-              padding: "8px 16px",
-              backgroundColor: "lightblue",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              fontWeight: "bold",
-            }}
-          >
-            <a href="/categories">Categories</a>
-          </button>
+        <div className="button-container">
+          <Link to="/users" className="button">
+            사용자 관리
+          </Link>
+          <Link to="/categories" className="button">
+            카테고리 관리
+          </Link>
+          <Link to="/posts" className="button">
+            게시물 관리
+          </Link>
         </div>
       </div>
     </div>

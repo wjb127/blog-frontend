@@ -1,0 +1,64 @@
+/* 공통 버튼 스타일 */
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #007BFF;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* 큰 버튼 스타일 */
+.large-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px 5px;
+}
+
+/* 컨테이너 스타일 */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 버튼 컨테이너 스타일 */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* 사용자 목록 스타일 */
+.user-list {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.user-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-buttons {
+  display: flex;
+  gap: 10px;
+}
