@@ -12,7 +12,14 @@
   "routes": [
     {
       "src": "/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate"
+      },
       "dest": "/index.html"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
     }
   ]
 }
