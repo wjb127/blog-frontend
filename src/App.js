@@ -8,7 +8,7 @@ import CategoryForm from "./components/CategoryForm";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
 
-// users 및 caterogies를 위한 라우트를 추가합니다.
+// users 및 를 위한 라우트를 추가합니다.
 function App() {
   return (
     <Router>
